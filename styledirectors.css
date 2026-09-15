@@ -1,0 +1,263 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'General Sans', sans-serif;
+    color: #FDF0D5;
+    user-select: none;
+    cursor: grab;
+}
+
+body.grabbing {
+    cursor: grabbing;
+}
+
+body.grabbing .gallery-item {
+    cursor: grabbing;
+}
+
+/* ==========================================================================
+   1. LOGO CENTRAL & NAVEGAÇÃO
+   ========================================================================== */
+.logo-container {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: translateX(-50%) scale(1.08);
+}
+
+.logo-container img {
+    height: 60px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s ease;
+    z-index: 999;
+}
+
+.nav-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.nav-content a {
+    font-family: 'General Sans', sans-serif;
+    color: #FDF0D5;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-content a:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.nav-close {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    background: none;
+    border: none;
+    color: #FDF0D5;
+    cursor: pointer;
+    padding: 8px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
+}
+
+.nav-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* ==========================================================================
+   2. FILTROS (CANTO ESQUERDO)
+   ========================================================================== */
+.filters {
+    position: fixed;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    color: #FDF0D5;
+    font-family: 'General Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: left;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 0;
+}
+
+.filter-btn:hover {
+    opacity: 0.7;
+    transform: translateX(8px);
+}
+
+.filter-btn.active {
+    opacity: 1;
+    transform: translateX(8px);
+}
+
+/* ==========================================================================
+   3. GALERIA LIVRE (INFINITA)
+   ========================================================================== */
+.gallery-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.gallery {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.gallery-item {
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    cursor: grab;
+    will-change: transform;
+    transition: opacity 0.4s ease;
+    background-color: #111;
+}
+
+.gallery-item:active {
+    cursor: grabbing;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   4. FOOTER
+   ========================================================================== */
+.site-footer {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    pointer-events: none;
+    opacity: 0.55;
+    transition: opacity 0.4s ease;
+}
+
+.site-footer:hover {
+    opacity: 1;
+}
+
+.site-footer * {
+    pointer-events: auto;
+}
+
+.footer-desc {
+    font-family: 'General Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #FDF0D5;
+    max-width: 380px;
+}
+
+.footer-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'General Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #FDF0D5;
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-instagram:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+
+.footer-instagram svg {
+    display: block;
+}
