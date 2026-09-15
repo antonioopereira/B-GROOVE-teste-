@@ -1,0 +1,287 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Harmattan:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'General Sans', sans-serif;
+    color: #FDF0D5;
+    user-select: none;
+    overscroll-behavior: none;
+}
+
+/* ==========================================================================
+   1. LOGO CENTRAL & NAVEGAÇÃO
+   ========================================================================== */
+.logo-container {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: translateX(-50%) scale(1.08);
+}
+
+.logo-container img {
+    height: 60px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s ease;
+    z-index: 999;
+}
+
+.nav-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.nav-content a {
+    font-family: 'General Sans', sans-serif;
+    color: #FDF0D5;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-content a:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.nav-close {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    background: none;
+    border: none;
+    color: #FDF0D5;
+    cursor: pointer;
+    padding: 8px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
+}
+
+.nav-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* ==========================================================================
+   2. CONTEÚDO DE CONTACTO
+   ========================================================================== */
+.contact-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 120px 100px 100px;
+    gap: 60px;
+    z-index: 1;
+}
+
+/* ----- Lado Esquerdo: Título Grande ----- */
+.contact-left {
+    flex: 1;
+    max-width: 50%;
+}
+
+.contact-title {
+    font-family: 'Harmattan', sans-serif;
+    font-size: clamp(6rem, 14vw, 16rem);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+    color: #FDF0D5;
+    margin-bottom: 40px;
+}
+
+.contact-subtitle {
+    font-family: 'General Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #FDF0D5;
+    opacity: 0.5;
+    max-width: 380px;
+}
+
+/* ----- Lado Direito: Blocos de Contacto ----- */
+.contact-right {
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.contact-label {
+    font-family: 'General Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FDF0D5;
+    opacity: 0.3;
+}
+
+.contact-link {
+    font-family: 'General Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #FDF0D5;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+a.contact-link:hover {
+    opacity: 1;
+    transform: translateX(-6px);
+}
+
+/* ==========================================================================
+   3. FOOTER
+   ========================================================================== */
+.site-footer {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    pointer-events: none;
+    opacity: 0.55;
+    transition: opacity 0.4s ease;
+}
+
+.site-footer:hover {
+    opacity: 1;
+}
+
+.site-footer * {
+    pointer-events: auto;
+}
+
+.footer-desc {
+    font-family: 'General Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #FDF0D5;
+    max-width: 380px;
+}
+
+.footer-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'General Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #FDF0D5;
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-instagram:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+
+.footer-instagram svg {
+    display: block;
+}
+
+/* ==========================================================================
+   4. RESPONSIVO
+   ========================================================================== */
+@media (max-width: 900px) {
+    .contact-content {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 140px 40px 100px;
+        gap: 40px;
+        overflow-y: auto;
+    }
+
+    .contact-left,
+    .contact-right {
+        max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .contact-block {
+        align-items: flex-start;
+    }
+
+    a.contact-link:hover {
+        transform: translateX(6px);
+    }
+
+    .contact-title {
+        margin-bottom: 20px;
+    }
+}
