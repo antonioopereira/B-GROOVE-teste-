@@ -94,12 +94,27 @@ document.addEventListener("DOMContentLoaded", () => {
         touchStartY = touchY;
     }, { passive: true });
 
+    // Função de cálculo de opacidade — fade APENAS nas extremidades
     function calculateOpacity(z) {
-        if (z > config.exitPoint) return 0;
-        if (z > 0) return 1 - (z / config.exitPoint);
-        if (z > -visibleDepth) return 1 - (Math.abs(z) / visibleDepth);
-        return 0;
+    // z positivo = a passar a câmara (fade out rápido só no final)
+    if (z > config.exitPoint) return 0;
+    if (z > 0) {
+        // Fade out apenas nos últimos 200px antes de sair
+        const fadeOutStart = config.exitPoint * 0.4;
+        if (z < fadeOutStart) return 1;
+        return 1 - ((z - fadeOutStart) / (config.exitPoint - fadeOutStart));
     }
+
+    // z negativo = a vir do fundo (fade in apenas no início)
+    if (z > -visibleDepth) {
+        // Fade in apenas nos primeiros 400px ao entrar
+        const fadeInEnd = -visibleDepth + 400;
+        if (z > fadeInEnd) return 1;
+        return 1 - ((fadeInEnd - z) / 400);
+    }
+
+    return 0;
+}
 
     gsap.ticker.add(() => {
         currentScroll += (targetScroll - currentScroll) * config.lerp;

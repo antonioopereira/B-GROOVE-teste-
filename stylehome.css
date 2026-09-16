@@ -109,7 +109,7 @@ html, body {
 }
 
 /* ==========================================================================
-   2. TIPOGRAFIA DE FUNDO
+   2. TIPOGRAFIA DE FUNDO — LADO ESQUERDO E DIREITO
    ========================================================================== */
 .bg-text-wrapper {
     position: fixed;
@@ -120,34 +120,43 @@ html, body {
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 0;
-    padding-top: 120px;
 }
 
 .bg-word {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
     font-family: 'Harmattan', sans-serif;
     font-weight: 400;
     color: #FDF0D5;
-    line-height: 0.85;
     letter-spacing: -0.05em;
     white-space: nowrap;
-    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.9;
 }
 
+.bg-word span {
+    display: block;
+}
+
+/* 👇 Frase 1 — lado ESQUERDO */
 .phrase-1 {
-    font-size: 140px;
+    left: 48px;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 64px;
     animation: fadeInOutFirst 20s infinite ease-in-out;
 }
 
+/* 👇 Frase 2 — lado DIREITO */
 .phrase-2 {
-    font-size: 300px;
-    margin-top: -60px;
+    right: 100px;
+    align-items: flex-end;
+    text-align: left;
+    font-size: 64px;
     animation: fadeInOutSecond 20s infinite ease-in-out;
 }
 
